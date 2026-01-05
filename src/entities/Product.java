@@ -1,7 +1,7 @@
 package entities;
 
 public class Product {
-    private int id;
+    private final int id;
     String name;
     double price;
     private int qtd;
@@ -10,16 +10,8 @@ public class Product {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public double getPrice() {

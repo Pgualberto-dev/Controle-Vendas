@@ -2,6 +2,7 @@ package app;
 
 import entities.Product;
 import entities.Storage;
+import services.Servicos;
 
 import java.util.InputMismatchException;
 import java.util.Locale;
@@ -11,6 +12,7 @@ public class Main {
     static void main(String[] args) {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
+        Servicos servicos = new Servicos();
         Storage storage = new Storage();
         int opcao = 0;
         boolean finalizar = false;
@@ -35,7 +37,7 @@ public class Main {
 
            finalizar = switch (opcao) {
                 case 1 -> {
-                    storage.cadastrarProdutos(sc);
+                    servicos.cadastrarProdutos(sc, storage);
                     yield false;
                 }
                 case 2 -> {
@@ -50,12 +52,10 @@ public class Main {
                     yield false;
                 }
                 case 3 -> {
-                    storage.vendasProdutos(sc);
+                    servicos.vendasProdutos(sc, storage);
                     yield false;
                 }
-                default -> {
-                    yield true;
-                }
+                default -> true;
 
             };
         }
